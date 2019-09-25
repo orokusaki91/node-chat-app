@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<title>ChatApp | Chat</title>
+
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="chat">
+	<div class="chat__sidebar">
+		<h3>People</h3>
+		<div id="users"></div>
+	</div>
+
+	<div class="chat__main">
+		<ol id="messages" class="chat__messages"></ol>
+
+		<div class="chat__footer">
+			<form id="message-form" method="POST">
+				<input type="text" name="message" placeholder="Message" autocomplete="off" autofocus>
+				<button type="submit">Send</button>
+			</form>
+
+			<button id="send-location">Send Location</button>
+		</div>
+	</div>
+
+	<script id="message-template" type="text/template">
+		<li class="message">
+			<div class="message__title">
+				<h4>{{ from }}</h4>
+				<span>{{ createdAt }}</span>
+			</div>
+			<div class="message__body">
+				<p>{{ text }}</p>
+			</div>
+		</li>
+	</script>
+
+	<script id="location-message-template" type="text/template">
+		<li class="message">
+			<div class="message__title">
+				<h4>{{ from }}</h4>
+				<span>{{ createdAt }}</span>
+			</div>
+			<div class="message__body">
+				<p>
+					<a href="{{ url }}" target="_blank">My current location</a>
+				</p>
+			</div>
+		</li>
+	</script>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="assets/js/libs/moment.js"></script>
+	<script src="assets/js/libs/mustache.js"></script>
+	<script src="assets/js/libs/deparam.js"></script>
+	<script src="socket.io/socket.io.js"></script>
+	<script src="assets/js/chat.js"></script>
+</body>
+</html>
